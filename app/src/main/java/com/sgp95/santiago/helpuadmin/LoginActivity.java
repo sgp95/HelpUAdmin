@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private final static String ADMIN_USER ="admin@grupoutp.edu.pe";
+    private final static String ADMIN_PASS = "123456";
 
     private EditText edtLoginCode, edtLoginPass;
     private Button btnLogin,btnPush;
@@ -44,7 +48,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(edtLoginCode.getText().toString().equals(ADMIN_USER) && edtLoginPass.getText().toString().equals(ADMIN_PASS)){
                     Validar();
+                }else {
+                    Log.e("ERROR","Usuario no ADminb");
+                }
             }
         });
 

@@ -80,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         complainFragment = new ComplainFragment();
-        showFragment(complainFragment);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.content,complainFragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     @Override
