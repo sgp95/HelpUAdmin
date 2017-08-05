@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sgp95.santiago.helpuadmin.chartfragments.PendingComplainsChart;
+import com.sgp95.santiago.helpuadmin.chartfragments.PerDayComplainsFragment;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private ComplainFragment complainFragment;
     private UserInfoFragment userInfoFragment;
     private ContactsFragment contactsFragment;
+    private PendingComplainsChart pendingChartFragment;
+    private PerDayComplainsFragment perDayComplainsFragment;
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
@@ -68,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.opt_contacts:
                         contactsFragment = new ContactsFragment();
                         showFragment(contactsFragment);
+                        break;
+                    case R.id.opt_graph01:
+                        pendingChartFragment = new PendingComplainsChart();
+                        showFragment(pendingChartFragment);
+                        break;
+                    case R.id.opt_graph02:
+                        perDayComplainsFragment = new PerDayComplainsFragment();
+                        showFragment(perDayComplainsFragment);
                         break;
                     case R.id.opt_exit:
                         auth.signOut();

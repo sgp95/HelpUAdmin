@@ -4,6 +4,7 @@ package com.sgp95.santiago.helpuadmin.model;
 
 public class User {
 
+    private String Code;
     private String Email;
     private String FirstName;
     private String Image;
@@ -48,5 +49,13 @@ public class User {
 
     public String getLastName() {
         return LastName;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
     }
 }

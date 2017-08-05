@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,11 +30,6 @@ public class ComplainFragment extends Fragment implements CommentAdpter.MyItemCl
     private List<Complain> complaintListReverse;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
-    private Bundle commentsData;
-    String userfullname, userImage, userCode;
-    Spinner spnCategorias,spnSedes;
-    List<String> categories = null,headquarters = null;
-    ArrayAdapter<String> spnArrayAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,12 +49,12 @@ public class ComplainFragment extends Fragment implements CommentAdpter.MyItemCl
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference();
 
-        recyclerView =  (RecyclerView ) view.findViewById(R.id.recycler_view_comment);
+        recyclerView = view.findViewById(R.id.recycler_view_comment);
         complaintList = new ArrayList<>();
-        final List<Complain> commentList;
+        //final List<Complain> commentList;
 
         complaintList = new ArrayList<>();
-        final ArrayList<Complain> complaintListReverse = new ArrayList<>();
+        //final ArrayList<Complain> complaintListReverse = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         commentAdpter = new CommentAdpter(recyclerView, complaintList, getContext());
         commentAdpter.setOnItemClickListener(this);
@@ -77,6 +70,7 @@ public class ComplainFragment extends Fragment implements CommentAdpter.MyItemCl
         mFirebaseDatabase.child("complaint").orderByChild("complainId").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("ChildChanged","seguir");
 
 
                 Complain complain = dataSnapshot.getValue(Complain.class);
@@ -141,7 +135,6 @@ public class ComplainFragment extends Fragment implements CommentAdpter.MyItemCl
 
             // ...
         });
-
 
     }
 

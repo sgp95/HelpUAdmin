@@ -18,13 +18,23 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class LoginActivity extends AppCompatActivity {
 
     private final static String ADMIN_USER ="admin@grupoutp.edu.pe";
     private final static String ADMIN_PASS = "123456";
 
-    private EditText edtLoginCode, edtLoginPass;
-    private Button btnLogin,btnPush;
+    @BindView(R.id.txt_login_code)
+    EditText edtLoginCode;
+
+    @BindView(R.id.txt_login_password)
+    EditText edtLoginPass;
+
+    @BindView(R.id.btn_login)
+    Button btnLogin;
+
     private FirebaseAuth auth;
 
     @Override
@@ -40,9 +50,11 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        edtLoginCode = (EditText)findViewById(R.id.txt_login_code);
-        edtLoginPass = (EditText)findViewById(R.id.txt_login_password);
-        btnLogin = (Button)findViewById(R.id.btn_login);
+        ButterKnife.bind(this);
+
+        //edtLoginCode = (EditText)findViewById(R.id.txt_login_code);
+        //edtLoginPass = (EditText)findViewById(R.id.txt_login_password);
+        //btnLogin = (Button)findViewById(R.id.btn_login);
 
         auth = FirebaseAuth.getInstance();
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -55,13 +67,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-       /* btnPush.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pushUser();
-            }
-        }); */
     }
 
     public   void Validar()

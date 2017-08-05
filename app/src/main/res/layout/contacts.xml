@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="80dp"
+    android:padding="5dp">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_alignParentTop="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/contact_row_image"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_contacts"
+        android:layout_marginEnd="5dp" />
+
+    <TextView
+        android:id="@+id/contact_row_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_row_image"
+        tools:text="LastName, FirstName"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tag_cargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_row_image"
+        android:layout_below="@id/contact_row_name"
+        android:text="Cargo: "
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tag_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_row_image"
+        android:layout_below="@id/tag_cargo"
+        android:text="Email: "
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tag_telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/contact_row_image"
+        android:layout_below="@id/tag_email"
+        android:text="Telefono: "
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/contact_row_cargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Cargo que ocupa"
+        android:layout_toEndOf="@id/tag_cargo"
+        android:layout_below="@id/contact_row_name"/>
+
+    <TextView
+        android:id="@+id/contact_row_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Email"
+        android:layout_toEndOf="@id/tag_email"
+        android:layout_below="@id/contact_row_cargo"/>
+
+    <TextView
+        android:id="@+id/contact_row_phone01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="telefono01"
+        android:layout_toEndOf="@id/tag_telefono"
+        android:layout_below="@id/contact_row_email"/>
+
+    <TextView
+        android:id="@+id/opt_phone02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" / "
+        android:layout_toEndOf="@id/contact_row_phone01"
+        android:layout_below="@id/contact_row_email"/>
+
+    <TextView
+        android:id="@+id/contact_row_phone02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="telefono02"
+        android:layout_toEndOf="@id/opt_phone02"
+        android:layout_below="@id/contact_row_email"/>
+</RelativeLayout>
