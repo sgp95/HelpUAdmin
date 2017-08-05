@@ -63,20 +63,23 @@ public class UserCommentsAdapter extends SelectableAdapter<UserCommentsAdapter.V
 
         public void bind(Comment comment){
 
-            progressBar.setVisibility(View.VISIBLE);
-            Picasso.with(context)
-                    .load(comment.getImage())
-                    .into(userImageProfile, new Callback(){
-                        @Override
-                        public void onSuccess() {
-                            progressBar.setVisibility(View.GONE);
-                            userImageProfile.setVisibility(View.VISIBLE);
-                        }
-                        @Override
-                        public void onError() {
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
+            //progressBar.setVisibility(View.VISIBLE);
+            if(comment.getImage()!=null){
+                Picasso.with(context)
+                        .load(comment.getImage())
+                        .into(userImageProfile, new Callback(){
+                            @Override
+                            public void onSuccess() {
+                                progressBar.setVisibility(View.GONE);
+                                userImageProfile.setVisibility(View.VISIBLE);
+                            }
+                            @Override
+                            public void onError() {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
+
+            }
 
             txtUserFullName.setText(comment.getUserName());
             txtUserCode.setText(comment.getUserCode());
