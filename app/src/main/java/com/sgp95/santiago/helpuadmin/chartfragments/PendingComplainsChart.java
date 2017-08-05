@@ -23,7 +23,7 @@ import org.eazegraph.lib.models.PieModel;
 public class PendingComplainsChart extends ChartFragment {
 
     private PieChart pieChart;
-    private int pendingComplains, resolvedComplains,totalComplains;
+    private int pendingComplains,procesingComplain, resolvedComplains,totalComplains;
 
 
     private DatabaseReference mFirebaseDatabase;
@@ -48,6 +48,7 @@ public class PendingComplainsChart extends ChartFragment {
 
         pendingComplains = 0;
         resolvedComplains = 0;
+        procesingComplain = 0;
         totalComplains = 0;
 
         mFirebaseDatabase.orderByChild("complainId").addChildEventListener(new ChildEventListener() {
@@ -59,10 +60,12 @@ public class PendingComplainsChart extends ChartFragment {
                 if(complain.getState().equals("Pendiente")){
                     pendingComplains = pendingComplains+1;
                 }
-                else if(complain.getState().equals("Solucionado")){
+                else if(complain.getState().equals("En Proceso")){
+                    procesingComplain = procesingComplain+1;
+                }else if(complain.getState().equals("Finalizado")){
                     resolvedComplains = resolvedComplains+1;
                 }
-                load(pendingComplains,resolvedComplains);
+                load(pendingComplains,resolvedComplains,procesingComplain);
             }
 
             @Override
@@ -104,12 +107,13 @@ public class PendingComplainsChart extends ChartFragment {
 
     }
 
-    private void load(int pending, int resolved){
+    private void load(int pending, int resolved, int procesing){
         Log.d("rastro","pendientes -> "+pending+" resueltos -> "+resolved);
 
         pieChart.clearChart();
         pieChart.addPieSlice(new PieModel("Pendientes", intToPercentage(pending), Color.parseColor("#FE6DA8")));
-        pieChart.addPieSlice(new PieModel("Resueltos", intToPercentage(resolved), Color.parseColor("#56B7F1")));
+        pieChart.addPieSlice(new PieModel("En Proceso", intToPercentage(procesing), Color.parseColor("#56B7F1")));
+        pieChart.addPieSlice(new PieModel("Finalizado", intToPercentage(resolved), Color.parseColor("#56B7F1")));
 
         pieChart.setOnItemFocusChangedListener(new IOnItemFocusChangedListener() {
             @Override

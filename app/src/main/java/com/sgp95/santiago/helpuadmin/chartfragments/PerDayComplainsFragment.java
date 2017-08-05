@@ -74,21 +74,6 @@ public class PerDayComplainsFragment extends ChartFragment {
                 }else {
                     Log.e("rastro","fechas diferentes");
                 }
-                /*
-                Date date;
-                Log.d("rastro",complain.getDateCreated());
-                try {
-                    date = dateFormat.parse(complain.getDateCreated());
-                    if(dateToday.getDay() == date.getDay()){
-                        Log.d("rastro","fechas igual "+dateToday.getDay()+"  "+date.getDay());
-                        load(1);
-                    }else {
-                        Log.e("rastro","fechas diferentes");
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                */
             }
 
             @Override
